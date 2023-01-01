@@ -96,7 +96,7 @@ app.get("/", function (req, res) {
 
         } else {
             res.send("working bro!");
-            // res.render("list", { listTitle: "Today", newListItems: foundItems });
+            res.render("list", { listTitle: "Today", newListItems: foundItems });
         }
 
     })
