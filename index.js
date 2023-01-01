@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const _= require("lodash");
 const PORT = process.env.PORT || 3000;
 // const date = require(__dirname + "/date.js");
-// console.log(date);
+// // console.log(date);
 
 
 const app = express();
@@ -17,9 +17,9 @@ app.use(express.static(__dirname + '/public'));
 
 mongoose.set('strictQuery', false);
 mongoose.connect("mongodb+srv://admin-rk:Test123@cluster0.thlm6db.mongodb.net/todolistDB", { useNewUrlParser: true }).then(() => {
-    console.log("Connected to MongoDB");
+    // console.log("Connected to MongoDB");
 }).catch(() => {
-    console.log("Failed to connect to MongoDB");
+    // console.log("Failed to connect to MongoDB");
 });
 
 const itemsSchema = new mongoose.Schema({
@@ -87,9 +87,9 @@ app.get("/", function (req, res) {
 
             Item.insertMany(defaultItems, (err) => {
                 if (err) {
-                    console.log(err);
+                    // console.log(err);
                 } else {
-                    console.log("Inserted all the default Items.");
+                    // console.log("Inserted all the default Items.");
                 }
             });
             res.redirect("/");
@@ -105,7 +105,7 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
 
-    // console.log(req.body)
+    // // console.log(req.body)
 
     let itemName = req.body.newItem;
     let listName = req.body.list;
@@ -132,7 +132,7 @@ app.post("/delete", function (req, res) {
     const listName = req.body.listName;
     // Item.deleteOne({ "_id": checkedItemId }, (err) => {
     //     if (!err) {
-    //         console.log("Record deleted successfully!");
+    //         // console.log("Record deleted successfully!");
     //     }
     // });
 
@@ -140,7 +140,7 @@ app.post("/delete", function (req, res) {
 
         Item.findByIdAndRemove(checkedItemId, (err) => {
             if (!err) {
-                console.log("Record deleted successfully!");
+                // console.log("Record deleted successfully!");
             }
         });
         res.redirect("/");
@@ -152,7 +152,7 @@ app.post("/delete", function (req, res) {
         //         return element._id !== checkedItemId;
         //     });
         //     // foundList.save();
-        //     console.log(itemsArr1);
+        //     // console.log(itemsArr1);
         // });
 
         List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: checkedItemId}}}, (err, foundList)=>{
@@ -193,5 +193,5 @@ app.get("/about", function (req, res) {
 });
 
 app.listen(PORT, function () {
-    console.log(`server is listening on port ${PORT}`);
+    // console.log(`server is listening on port ${PORT}`);
 });
