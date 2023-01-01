@@ -95,7 +95,7 @@ app.get("/", function (req, res) {
             res.redirect("/");
 
         } else {
-            // res.send("working bro!"); check
+            // res.send("working bro!");
             res.render("list", { listTitle: "Today", newListItems: foundItems });
         }
 
